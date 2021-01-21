@@ -2,6 +2,7 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 #define BLUE "\x1B[34m"
 #define GREEN "\x1b[32m"
@@ -16,12 +17,13 @@ int open_dir(int argc, char *argv[])
 {
 	DIR *dir = NULL;
 	struct dirent *read = NULL;
-
+	char string;
 
 	dir = opendir("."); /* Opens directory  */
 
 	if (dir == NULL) /* Checks if directory is empty */
 		return (0);
+
 
 	while ((read = readdir(dir)) != NULL)
 	{
