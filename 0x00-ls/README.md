@@ -9,10 +9,10 @@ Specializations - System programming & Algorithm ― Linux programming
 
 ### Tasks
 
-- **0. Let's start with something simple! **
+- **0. Let's start with something simple!**
 Create a program that lists the content of the current directory.
 
-- **1. Maybe some parameters? **
+- **1. Maybe some parameters?**
 Your program should now take one or more file or directory names as parameters.
 
 - **2. What about options?**
