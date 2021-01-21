@@ -9,14 +9,18 @@
 int main(int argc, char *argv[])
 {
 
+	int dir_path = 0;
+
 	if (argc == 1)
 	{
-		open_dir(argc, argv);
+		get_arg(argc, argv);
+		dir_path = open_dir(argc, argv);
 	}
-	else if (argc == 2)
+	else if (argc > 1)
 	{
-		open_dir_path(argc, argv);
+		get_arg(argc, argv);
+		dir_path = open_dir_path(argc, argv);
 	}
 
-	return (0);
+	return (dir_path);
 }

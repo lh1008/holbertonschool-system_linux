@@ -9,7 +9,7 @@
  * @argv: pointer to array of arguments passed
  * Return: prints directories files and folders.
  */
-int open_dir(int argc, char *argv[])
+int open_dir(int argc, char **argv)
 {
 	DIR *dir = NULL;
 	struct dirent *read = NULL;
@@ -19,7 +19,6 @@ int open_dir(int argc, char *argv[])
 
 	if (dir == NULL) /* Checks if directory is empty */
 		return (0);
-
 
 	while ((read = readdir(dir)) != NULL)
 	{
@@ -35,6 +34,6 @@ int open_dir(int argc, char *argv[])
 			}
 		}
 	}
-	puts("\n");
+	putchar('\n');
 	closedir(dir);
 }
