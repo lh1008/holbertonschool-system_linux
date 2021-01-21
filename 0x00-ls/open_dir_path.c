@@ -12,13 +12,12 @@
  * @argv: pointer to array of arguments passed
  * Return: prints directories files and folders.
  */
-int open_dir(int argc, char *argv[])
+int open_dir_path(int argc, char *argv[])
 {
 	DIR *dir = NULL;
 	struct dirent *read = NULL;
 
-
-	dir = opendir("."); /* Opens directory  */
+	dir = opendir(argv[argc-1]); /* Opens directory  */
 
 	if (dir == NULL) /* Checks if directory is empty */
 		return (0);

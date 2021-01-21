@@ -8,7 +8,15 @@
  */
 int main(int argc, char *argv[])
 {
-	open_dir(argc, argv);
+
+	if (argc == 1)
+	{
+		open_dir(argc, argv);
+	}
+	else if (argc == 2)
+	{
+		open_dir_path(argc, argv);
+	}
 
 	return (0);
 }
