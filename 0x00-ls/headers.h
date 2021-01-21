@@ -2,6 +2,10 @@
 #define HEADERS_H
 
 #include <stdio.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <string.h>
+#include <errno.h>
 
 /**
  * open_dir - function taking parameters

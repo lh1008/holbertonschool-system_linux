@@ -1,8 +1,4 @@
-#include <dirent.h>
-#include <sys/types.h>
-#include <stdio.h>
-#include <string.h>
-#include <errno.h>
+#include "headers.h"
 
 #define BLUE "\x1B[34m"
 #define GREEN "\x1b[32m"
