@@ -6,6 +6,8 @@
 #include <sys/types.h>
 #include <string.h>
 #include <errno.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 /**
  * open_dir - function taking parameters
