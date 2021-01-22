@@ -13,13 +13,13 @@ int main(int argc, char *argv[])
 
 	if (argc == 1)
 	{
-		get_arg(argc, argv);
+		/*get_arg(argc, argv);*/
 		dir_path = open_dir(argc, argv);
 	}
 	else if (argc > 1)
 	{
 		get_arg(argc, argv);
-		dir_path = open_dir_path(argc, argv);
+		/*dir_path = open_dir_path(argc, argv);*/
 	}
 
 	return (dir_path);
