@@ -11,18 +11,21 @@
 
 /**
  * struct op_tions - This struct has the options from terminal
- * @a: First member
- * @b: Second member
- * @c: Third member
- *
+ * @a: -a option
+ * @A: -A option
+ * @l: -l option
+ * @one: -1 option
+ * @err: whenever an erros shows up
  * Description: Longer description
  */
-struct op_tions
+typedef struct op_tions
 {
-	int a;
-	int b;
-	int c;
-};
+	char a;
+	char A;
+	char l;
+	int  one;
+	int err;
+} option_s;
 
 /**
  * open_dir - function taking parameters
