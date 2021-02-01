@@ -20,4 +20,4 @@ Those advanced concepts include but are not limited to:
 ### Projects
 
 - [0x00. C - ls](https://github.com/lh1008/holbertonschool-system_linux/tree/main/0x00-ls)
-- [0x01. C - Static variables, getline]()
+- [0x01. C - Static variables, getline](https://github.com/lh1008/holbertonschool-system_linux/tree/main/0x01-getline)
