@@ -33,19 +33,19 @@ char *_getline(const int fd)
 	}
 	fb = get_descriptor_buf(&head, fd);
 	if (fb)
-		line = read_buf(fb);
+		line = read_buffer(fb);
 	if (line && line[0] == '\n' && !line[1])
 		line[0] = 0;
 	return (line);
 }
 
 /**
- * read_buf - reads into the buffer
+ * read_buffer - reads into the buffer
+ * Desc: read_buffer function
  * @fb: the fd buf struct
- *
  * Return: 0 on success else -1 on error.
  */
-char *read_buf(descriptor_t *fb)
+char *read_buffer(descriptor_t *fb)
 {
 	char buf[READ_SIZE + 1], *p, *line;
 	ssize_t r = 0;
@@ -90,10 +90,11 @@ char *read_buf(descriptor_t *fb)
 }
 
 /**
- * get_fdbuf - adds a car to linked list
+ * get_descriptor_buf - entry to struct buf
+ * Desc: get_descriptor_buf function
  * @head: pointer to head node
  * @fd: file descriptor of buffer to get
- * Return: pointer to the fd buf node
+ * Return: pointer to the fd buf head node
  */
 descriptor_t *get_descriptor_buf(descriptor_t *head, const int fd)
 {
@@ -128,11 +129,12 @@ descriptor_t *get_descriptor_buf(descriptor_t *head, const int fd)
 }
 
 /**
- **_strchr - locates a character in a string
- *@s: the string to be parsed
- *@c: the character to look for
- *@len: number of bytes to search
- *Return: (s) a pointer to the memory area s
+ ** _strchr - entry to compare character
+ * Desc: _strchr function that locates a character in a string
+ * @s: the string to be parsed
+ * @c: the character to look for
+ * @len: number of bytes to search
+ * Return: pointer to memory
  */
 char *_strchr(char *s, char c, size_t len)
 {
@@ -147,16 +149,16 @@ char *_strchr(char *s, char c, size_t len)
 }
 
 /**
- * _realloc - reallocates a block of memory
- * @ptr: pointer to previous malloc'ated block
- * @old_size: byte size of previous block
- * @new_size: byte size of new block
- *
- * Return: pointer to da ol'block nameen.
+ * _realloc - entry to reallocate
+ * Desc: _realloc function that reallocates a block of memory
+ * @ptr: pointer to buffer
+ * @old_size: unisigned int type old size
+ * @new_size: unsigned int type new size
+ * Return: memory allocation, NULL if fails
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *p;
+	void *new;
 
 	if (new_size == old_size)
 		return (ptr);
@@ -167,23 +169,23 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	if (ptr == NULL)
 	{
-		p = malloc(new_size);
-		if (p == NULL)
+		new = malloc(new_size);
+		if (new == NULL)
 		{
 			free(ptr);
 			return (NULL);
 		}
 		free(ptr);
-		return (p);
+		return (new);
 	}
-	p = malloc(new_size);
-	if (p == NULL)
+	new = malloc(new_size);
+	if (new == NULL)
 	{
 		free(ptr);
 		return (NULL);
 	}
 	if (new_size > old_size)
-		memcpy(p, ptr, old_size);
+		memcpy(new, ptr, old_size);
 	free(ptr);
-	return (p);
+	return (new);
 }
