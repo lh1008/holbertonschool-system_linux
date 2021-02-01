@@ -58,8 +58,9 @@ void insert_car(car_node **head, int id)
 		printf("Car %d joined the race\n", id);
 		return;
 	}
-	for (new = *head; new->next && new->next->car_id <= id; new = new->next)
-		;
+	new = *head;
+	while (new->next && new->next->car_id <= id)
+		new = new->next;
 	if (new->car_id == id)
 	{
 		new->laps++;
