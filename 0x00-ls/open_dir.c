@@ -22,7 +22,8 @@ int open_dir(int argc, char **argv)
 
 	while ((read = readdir(dir)) != NULL)
 	{
-		if (strcmp(read->d_name, ".") != 0 && strcmp(read->d_name, "..") != 0)
+		if (strcmp(read->d_name, ".") != 0 &&\
+		    strcmp(read->d_name, "..") != 0)
 		{
 			if (read->d_type == DT_DIR)
 			{

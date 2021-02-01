@@ -20,13 +20,15 @@ int open_dir_path(int argc, char **argv)
 
 	if (dir == NULL) /* Checks if directory is empty */
 	{
-		printf("%s: cannot access '%s': %s\n", argv[0], argv[1], strerror(errno));
+		printf("%s: cannot access '%s': %s\n", argv[0], argv[1],\
+		       strerror(errno));
 		return (2);
 	}
 
 	while ((read = readdir(dir)) != NULL)
 	{
-		if (strcmp(read->d_name, ".") != 0 && strcmp(read->d_name, "..") != 0)
+		if (strcmp(read->d_name, ".") != 0 &&\
+		    strcmp(read->d_name, "..") != 0)
 		{
 			if (read->d_type == DT_DIR)
 			{

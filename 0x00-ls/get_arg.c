@@ -35,7 +35,8 @@ void get_arg(int argc, char **argv)
 				case '-':
 					break;
 				default: option_s->err = errno;
-					printf("%d", option_s->err);
+					printf("%s: invalid option -- '%d'", argv[0],\
+					       argv[i][x]);
 					break;
 				}
 				/*printf("%c", argv[i][x]);*/
