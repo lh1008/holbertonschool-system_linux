@@ -18,18 +18,18 @@
  * @next: pointer to next node
  * Description: node structure that holds the file descriptor
  */
-typedef struct fd
+typedef struct descriptor
 {
 	int fd;
 	char *buf;
 	size_t i;
 	size_t len;
-	struct fd *next;
-} FdBuf;
+	struct descriptor *next;
+} descriptor_t;
 
 char *_getline(const int fd);
-char *read_buf(FdBuf *fb);
-FdBuf *get_fdbuf(FdBuf *head, const int fd);
+char *read_buf(descriptor_t *fb);
+descriptor_t *get_descriptor_buf(descriptor_t *head, const int fd);
 char *_strchr(char *s, char c, size_t size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 

@@ -8,8 +8,8 @@
  */
 char *_getline(const int fd)
 {
-	static FdBuf head;
-	FdBuf *fb = NULL, *temp;
+	static descriptor_t head;
+	descriptor_t *fb = NULL, *temp = NULL;
 	char *line = NULL;
 
 	if (fd == -1)
@@ -31,7 +31,7 @@ char *_getline(const int fd)
 		memset(&head, 0, sizeof(head));
 		return (NULL);
 	}
-	fb = get_fdbuf(&head, fd);
+	fb = get_descriptor_buf(&head, fd);
 	if (fb)
 		line = read_buf(fb);
 	if (line && line[0] == '\n' && !line[1])
@@ -45,7 +45,7 @@ char *_getline(const int fd)
  *
  * Return: 0 on success else -1 on error.
  */
-char *read_buf(FdBuf *fb)
+char *read_buf(descriptor_t *fb)
 {
 	char buf[READ_SIZE + 1], *p, *line;
 	ssize_t r = 0;
@@ -95,9 +95,9 @@ char *read_buf(FdBuf *fb)
  * @fd: file descriptor of buffer to get
  * Return: pointer to the fd buf node
  */
-FdBuf *get_fdbuf(FdBuf *head, const int fd)
+descriptor_t *get_descriptor_buf(descriptor_t *head, const int fd)
 {
-	FdBuf *node;
+	descriptor_t *node;
 
 	if (head->buf == NULL && head->fd == '\0'
 	    && head->next == NULL)
