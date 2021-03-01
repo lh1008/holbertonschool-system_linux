@@ -1,33 +1,30 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 '''
-Module that locates and replaces the first ocurrence of a string
-in the heap of a process.
+Locates and replaces first occurrence of a string in the heap of a process
 Usage: ./read_write_heap.py PID search_string replace_by_string
-
-PID is the pid of the target process
-search_string with
+PID is the PID of the running process
+strings are ASCII
 '''
 
 import sys
 
 
-def print_usage_exit():
-    """ Method to print and exit """
+def print_usage():
     print('Usage: {} pid search write'.format(sys.argv[0]))
     sys.exit(1)
 
 
 def main():
     if len(sys.argv) != 4:
-        print_usage_exit()
+        print_usage()
 
     pid = int(sys.argv[1])
     if pid <= 0:
-        print_usage_exit()
+        print_usage()
     search_string = str(sys.argv[2])
     write_string = str(sys.argv[3])
-    if search_string  == "":
-        print_usage_and_exit()
+    if len(write_string) > len(search_string):
+        raise IndexError
 
     map_file_name = '/proc/{}/maps'.format(pid)
     mem_file_name = '/proc/{}/mem'.format(pid)
@@ -54,7 +51,7 @@ def main():
             print('{} does not have read/write permission'.format(pathname))
             raise PermissionError
 
-        # Get Start and end of the heap in virtual memory
+        #   GET START AND END OF HEAP IN VIRUTAL MEMORY
         address = mem_addr.split('-')
         if len(address) != 2:
             print('Wrong address format')
@@ -85,14 +82,17 @@ def main():
             mem_file.close()
             exit(1)
 
-        # write the new string
-        print("Writing '{}' at {:x}".format(write_string, addr_start + i))
+        #   WRITE NEW STRING
+        print("changing '{}' to '{}' in {}:"
+              .format(search_string, write_string, pid))
         mem_file.seek(addr_start + i)
-        mem_file.write(bytes(write_string, "ASCII"))
-
+        mem_file.write(bytes(write_string + '\0', 'ASCII'))
+        if len(write_string) > 0:
+            print("String changed!")
         map_file.close()
         mem_file.close()
         break
+
 
 if __name__ == '__main__':
     main()
