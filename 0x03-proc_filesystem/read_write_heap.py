@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''
-Locates and replaces first occurrence of a string in the heap of a process
+Module that locates and replaces the first ocurrence of a string
+in the heap of a process.
 Usage: ./read_write_heap.py PID search_string replace_by_string
 PID is the PID of the running process
 strings are ASCII
@@ -19,10 +20,12 @@ def main():
         print_usage()
 
     pid = int(sys.argv[1])
+
     if pid <= 0:
         print_usage()
     search_string = str(sys.argv[2])
     write_string = str(sys.argv[3])
+
     if len(write_string) > len(search_string):
         raise IndexError
 
@@ -44,14 +47,14 @@ def main():
         offset = split_line[2]
         device = split_line[3]
         inode = split_line[4]
-        pathname = split_line[-1][:-1]
+        path_name = split_line[-1][:-1]
 
-        #   CHECK FOR READ AND WRITE PERMISSION
+        # Check for read and write permission
         if perms[0] != 'r' or perms[1] != 'w':
-            print('{} does not have read/write permission'.format(pathname))
+            print('{} does not have read/write permission'.format(path_name))
             raise PermissionError
 
-        #   GET START AND END OF HEAP IN VIRUTAL MEMORY
+        # Get start and end of heap in virtual memory
         address = mem_addr.split('-')
         if len(address) != 2:
             print('Wrong address format')
@@ -61,7 +64,7 @@ def main():
         addr_start = int(address[0], 16)
         addr_end = int(address[1], 16)
 
-        #   OPEN AND READ MEMORY
+        # Open and read memory
         try:
             mem_file = open(mem_file_name, 'rb+')
         except IOError as e:
@@ -69,11 +72,11 @@ def main():
             map_file.close()
             exit(1)
 
-        #   READ HEAP
+        # Read Heap
         mem_file.seek(addr_start)
         heap = mem_file.read(addr_end - addr_start)
 
-        #   FIND STRING
+        # Find String
         try:
             i = heap.index(bytes(search_string, 'ASCII'))
         except Exception:
@@ -82,13 +85,15 @@ def main():
             mem_file.close()
             exit(1)
 
-        #   WRITE NEW STRING
-        print("changing '{}' to '{}' in {}:"
+        # Write New String
+        print("Changing '{}' to '{}' in {}:"
               .format(search_string, write_string, pid))
         mem_file.seek(addr_start + i)
         mem_file.write(bytes(write_string + '\0', 'ASCII'))
+
         if len(write_string) > 0:
             print("String changed!")
+
         map_file.close()
         mem_file.close()
         break
