@@ -11,11 +11,13 @@ import sys
 
 
 def print_usage():
+    """ Method to print usage and exit 1 """
     print('Usage: {} pid search write'.format(sys.argv[0]))
     sys.exit(1)
 
 
 def main():
+    """ Method to search for a PID and replace it's content """
     if len(sys.argv) != 4:
         print_usage()
 
