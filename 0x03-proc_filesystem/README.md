@@ -49,7 +49,7 @@ You will see a process running in your machine.
 ...
 ```
 
-Check the `PID` of the process running:
+Check the `PID` of the running process in a different terminal window:
 
 `$ ps aux | grep ./loop | grep -v grep`
 
