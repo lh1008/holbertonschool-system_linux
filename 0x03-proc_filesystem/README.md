@@ -21,6 +21,8 @@ Write a blog post about the virtual memory.
 
 ### Instructions
 
+This program has been compiled using `gcc version 8.4.0` and `Python 3.8.5`.
+
 Download [`loop.c`](https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x03-proc_filesystem/holberton.c) and [`read_write_heap.py`](https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x03-proc_filesystem/read_write_heap.py) files to your system.
 
 Compile `loop.c` file:
