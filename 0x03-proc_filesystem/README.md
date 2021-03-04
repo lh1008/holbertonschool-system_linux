@@ -19,7 +19,7 @@ Write a blog post about the `/proc filesystem` and the `/proc/maps` and `/proc/m
 _**2. Blog post #2**_
 Write a blog post about the virtual memory.
 
-### Who to make it work
+### Instructions
 
 Download [`loop.c`](https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x03-proc_filesystem/holberton.c) and [read_write_heap.py](https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x03-proc_filesystem/read_write_heap.py) files to your system.
 
@@ -56,7 +56,7 @@ your_pc   6778  0.0  0.0  8789  564 pts/14  S+  14:25  0:00  ./loop
 ```
 `6778` is your running process.
 
-Execute in the new terminal window as root the `read_write_heap.py` file with the following lines:
+Execute in the new terminal window as root the `read_write_heap.py` file with the following line:
 
 `$ sudo ./read_write_heap.py 6778 Holberton "C is fun"`
 
