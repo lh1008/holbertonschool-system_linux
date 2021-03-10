@@ -56,7 +56,7 @@ To test the executables run the following command:
 
 `$ ./0-hreadelf 0-hreadelf`
 
-Your machine will print the something similar to this `ELF file headers`:
+Your machine will print the something similar to this `ELF file header`:
 
 ```
 ELF Header:
