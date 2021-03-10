@@ -4,7 +4,7 @@
 
 /**
  * main - entry to main
- * Desc: main function to print ELF file header
+ * Desc: main function to print ELF sections' header
  * @argc: argument count
  * @argv: arguments
  * @env:  environment
@@ -12,7 +12,7 @@
  */
 int main(int argc, char **argv, char **env)
 {
-	char *args[] = {"/usr/bin/readelf", "-W", "-h", "", NULL};
+	char *args[] = {"/usr/bin/readelf", "-W", "-S", "", NULL};
 
 	if (argc != 2)
 		exit(0);
