@@ -21,3 +21,6 @@ Those advanced concepts include but are not limited to:
 
 - [0x00. C - ls](https://github.com/lh1008/holbertonschool-system_linux/tree/main/0x00-ls)
 - [0x01. C - Static variables, getline](https://github.com/lh1008/holbertonschool-system_linux/tree/main/0x01-getline)
+- [0x03-proc_filesystem](https://github.com/lh1008/holbertonschool-system_linux/tree/main/0x03-proc_filesystem)
+- [0x04-readelf](https://github.com/lh1008/holbertonschool-system_linux/tree/main/0x04-readelf)
+- [0x05-libasm]()
