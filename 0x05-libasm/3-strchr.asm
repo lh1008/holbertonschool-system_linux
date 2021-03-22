@@ -9,14 +9,14 @@ asm_strchr:
 	mov     rbp, rsp
 	xor     rax, rax
 
-strchr_loop:
+loop_strchr:
 	mov     al, BYTE [rdi]
 	cmp     BYTE [rdi], sil
 	jz      match
 	cmp     BYTE [rdi], 0
 	jz      end
 	inc     rdi
-	jmp     strchr_loop
+	jmp     loop_strchr
 
 match:
 	mov     rax, rdi

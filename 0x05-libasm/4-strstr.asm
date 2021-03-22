@@ -22,7 +22,7 @@ asm_strstr:
 	test rdi, rdi
 	jz end
 
-strstr_loop:
+loop_strstr:
 	mov r8b, BYTE [rdi + rcx]
 	mov r9b, BYTE [rsi + rcx]
 	test r8b, r8b
@@ -33,11 +33,11 @@ strstr_loop:
 	je equal
 	inc rdi
 	xor rcx, rcx
-	jmp strstr_loop
+	jmp loop_strstr
 
 equal:
 	inc rcx
-	jmp strstr_loop
+	jmp loop_strstr
 
 compare:
 	test r9b, r9b

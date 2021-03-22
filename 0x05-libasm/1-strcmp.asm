@@ -8,7 +8,7 @@ asm_strcmp:
 	mov rbp, rsp
 	push rdx
 
-strcmp_loop:
+loop_strcmp:
 	mov dl,	[rdi]
 	mov dh,	[rsi]
 	cmp dl,	dh
@@ -18,7 +18,7 @@ strcmp_loop:
 	je equal
 	inc rdi
 	inc rsi
-	jmp strcmp_loop
+	jmp loop_strcmp
 
 less:
 	mov eax, -1h
