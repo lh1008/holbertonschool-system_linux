@@ -4,8 +4,8 @@ BITS 64
 	section .text
 
 asm_strlen:
-	push rbp
-	mov rbp, rsp
+	push rbp		; push rbp to stack
+	mov rbp, rsp		; move what's in rsp to rbp
 	mov rax, 0
 	jmp check
 
