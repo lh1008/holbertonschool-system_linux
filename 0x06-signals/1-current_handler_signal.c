@@ -8,9 +8,11 @@
  */
 void (*current_handler_signal(void))(int)
 {
-	sighandler_t handler = signal(SIGINT, SIG_DFL);
+	void (*handler)(int);
 
-	if (signal(SIGINT, handler) != SIG_ERR)
+	handler = signal(SIGINT, SIG_DFL);
+
+	if (signal(SIGINT, handler) == SIG_ERR)
 		return (NULL);
 	else
 		return (handler);
