@@ -7,7 +7,7 @@
  */
 void (*current_handler_signal(void))(int)
 {
-	sigset_t handler;
+	void (*handler)(int);
 
 	handler = signal(SIGINT, SIG_DFL);
 
