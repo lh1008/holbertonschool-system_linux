@@ -1,15 +1,5 @@
 #include "signals.h"
 
-/**
- * handler - handler entry
- * Desc: function to print signal
- * @signum: int signal
- * Return: print 'Gotcha!'
- */
-void handler(int signum)
-{
-	printf("Gotcha! [%d]\n", signum);
-}
 
 /**
  * handle_signal - entry to handle_signal
@@ -23,4 +13,16 @@ int handle_signal(void)
 	else
 		return (-1);
 
+}
+
+/**
+ * handler - handler entry
+ * Desc: function to print signal
+ * @signum: int signal
+ * Return: print 'Gotcha!'
+ */
+void handler(int signum)
+{
+	printf("Gotcha! [%d]\n", signum);
+	fflush(stdout);
 }

@@ -7,5 +7,6 @@
 #include <signal.h>
 
 int handle_signal(void);
+void handler(int signum);
 
 #endif /* SIGNALS_H */
