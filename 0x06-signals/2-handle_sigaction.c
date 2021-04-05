@@ -2,8 +2,8 @@
 
 
 /**
- * handle_signal - entry to handle_signal
- * Desc: handler_signal that set a handler for a signal SIGINT
+ * handle_sigaction - entry to handle_action
+ * Desc: handler_sigaction that set a handler for a signal SIGINT
  * Return: 0 in success or -1 on error
  */
 int handle_sigaction(void)
@@ -11,7 +11,7 @@ int handle_sigaction(void)
 	struct sigaction new_action, old_action;
 
 	new_action.sa_handler = handler;
-	sigemptyset (&new_action.sa_mask);
+	sigemptyset(&new_action.sa_mask);
 	new_action.sa_flags = 0;
 
 	if (sigaction(SIGINT, &new_action, &old_action) < 0)
