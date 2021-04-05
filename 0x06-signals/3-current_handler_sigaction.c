@@ -9,14 +9,9 @@ void (*current_handler_sigaction(void))(int)
 {
 	struct sigaction new_action;
 
-	sigemptyset(&new_action.sa_mask);
-	new_action.sa_flags = 0;
-
 	if (sigaction(SIGINT, &new_action, NULL) == -1)
 		return (NULL);
-	else if (new_action.sa_handler == SIG_DFL)
-		return (new_action.sa_handler);
-	else if (new_action.sa_handler == SIG_IGN)
+	else
 		return (new_action.sa_handler);
 
 }
