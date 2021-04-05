@@ -1,20 +1,22 @@
 #include "signals.h"
 
 /**
- * handler - handler entry
- * Desc: function to print signal
+ * _handler - _handler entry
+ * Desc: function to print process ID
  * @signum: int signal
- * Return: print 'Gotcha!'
+ * Return: print 'SIGQUIT sent by...'
  */
-void _handler()
+void _handler(int signum)
 {
-	printf("SIGQUIT sent by %d\n", getpid());
+	signum = getpid();
+
+	printf("SIGQUIT sent by %d\n", signum);
 	fflush(stdout);
 }
 
 /**
- * handle_signal - entry to handle_signal
- * Desc: handler_signal that set a handler for a signal SIGINT
+ * trace_signal_sender - entry to trace_signal_sender
+ * Desc: trace_signal_sender that set a handler for a signal SIGQUIT
  * Return: 0 in success or -1 on error
  */
 int trace_signal_sender(void)
