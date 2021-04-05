@@ -1,16 +1,19 @@
 #include "signals.h"
 
 /**
- * _handler - _handler entry
+ * get_pid_handler - get_pid_handler entry
  * Desc: function to print process ID
  * @signum: int signal
+ * @info: pointer siginfo_t size
+ * @context: void type
  * Return: print 'SIGQUIT sent by...'
  */
-void _handler(int signum)
+void get_pid_handler(int signum, siginfo_t *info, void *context)
 {
-	signum = getpid();
+	(void)signum;
+	(void)context;
 
-	printf("SIGQUIT sent by %d\n", signum);
+	printf("SIGQUIT sent by %d\n", info->si_pid);
 	fflush(stdout);
 }
 
@@ -21,9 +24,14 @@ void _handler(int signum)
  */
 int trace_signal_sender(void)
 {
-	if (signal(SIGQUIT, _handler) != SIG_ERR)
-		return (0);
-	else
+	struct sigaction new_action;
+
+	new_action.sa_flags = SA_SIGINFO;
+	new_action.sa_sigaction = get_pid_handler;
+
+	if (sigaction(SIGQUIT, &new_action, NULL) < 0)
 		return (-1);
+	else
+		return (0);
 
 }
