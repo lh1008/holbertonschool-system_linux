@@ -19,9 +19,3 @@ hobjdump: 1-objdump.c
 	$(CC) $(CFLAGS) 1-objdump.c -o hobjdump
 	cp hobjdump test_file
 	touch 1-objdump.c
-
-clean:
-	-rm -r hnm
-	-rm -r hobjdump
-
-re: clean hnm hobjdump
