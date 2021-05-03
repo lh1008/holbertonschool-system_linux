@@ -24,9 +24,9 @@ All the files have been compiled on `Ubuntu 20.04` using `gcc 8.4.0` and the fla
 
 Open up your terminal. Download the following files and locate them in a directory that you will like to try the code out:
 
-`wget -O 0-nm.c https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x07-nm_objdump/0-nm.c`
-`wget -O 1-ojdump.c https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x07-nm_objdump/0-objdump.c`
-`wget -O Makefile https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x07-nm_objdump/Makefile`
+- `wget -O 0-nm.c https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x07-nm_objdump/0-nm.c`
+- `wget -O 1-ojdump.c https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x07-nm_objdump/0-objdump.c`
+- `wget -O Makefile https://raw.githubusercontent.com/lh1008/holbertonschool-system_linux/main/0x07-nm_objdump/Makefile`
 
 You should have installed [`make`](https://www.gnu.org/software/make/).
 
@@ -302,3 +302,5 @@ Contents of section .comment:
  0010 2e302d33 7562756e 74753229 20382e34  .0-3ubuntu2) 8.4
  0020 2e3000                               .0.
  ```
+
+Enjoy `:)`!
