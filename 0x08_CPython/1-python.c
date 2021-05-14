@@ -1,8 +1,8 @@
 #include <Python.h>
 
 /**
- * print_python_list_info - entry to print python list info
- * Desc: function that prints the data type inside lists
+ * print_python_list - entry to print python list info
+ * Desc: print_python_list function that prints the data type inside lists
  * @p: pointer PyObject type structure
  * Returns: Nothing
  */
