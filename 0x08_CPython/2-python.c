@@ -1,9 +1,11 @@
 #include <Python.h>
 
 /**
- * print_python_bytes - Prints some basic info about Python lists
- * and Python bytes objects
+ * print_python_bytes - entry to print python bytes
+ * Desc: print_python_bytes function that prints some basic
+ * info about Python lists and Python bytes objects
  * @p: PyObject
+ * Return: print Python lists and Python bytes objects
  */
 void print_python_bytes(PyObject *p)
 {
@@ -30,8 +32,10 @@ void print_python_bytes(PyObject *p)
 }
 
 /**
- * print_python_list - Prints python list data
- * @p: Pyobject
+ * print_python_list - entry to print python list info
+ * Desc: print_python_list function that prints the data type inside lists
+ * @p: pointer PyObject type structure
+ * Returns: Nothing
  */
 void print_python_list(PyObject *p)
 {
