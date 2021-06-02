@@ -1,7 +1,9 @@
-#include "syscalls.h"
+#include "strace.h"
 
 /**
-* main - use ptrace for getting the syscall name
+* main - entry to main
+* Desc: main function that executes and traces a given command
+* using ptrace to get the syscall
 * @ac: number of arguments
 * @av: list of arguments
 * @en: list of environ variables
@@ -15,7 +17,7 @@ int main(int ac, char **av, char **en)
 
 	if (ac < 2)
 	{
-		printf("./strace_0 command [args...]\n");
+		printf("Usage: %s command [args...]\n", av[0]);
 		return (1);
 	}
 	setbuf(stdout, NULL);

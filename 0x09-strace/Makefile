@@ -7,7 +7,7 @@ CC = gcc
 # -Wextra
 # -pedantic
 CFLAGS = -Wall -Werror -Wextra -pedantic
-DEPS = syscalls.h
+DEPS = syscalls.h strace.h
 
 SRCS0 = strace_0.c
 OBJ0 = $(SRCS0:.c=.o)
