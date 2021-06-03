@@ -61,8 +61,10 @@ int main(int ac, char **av, char **en)
 				(printf(" = %#lx\n",
 					(unsigned long) regs.rax), flag = 0);
 			if (WSTOPSIG(status) == SIGTRAP && (long) regs.rax == -38)
-				(printf("%s",
-					syscalls_64_g[regs.orig_rax].name), flag = 1);
+			{
+				flag = 1;
+				printf("%s", syscalls_64_g[regs.orig_rax].name);
+			}
 			ptrace(PTRACE_SYSCALL, child, NULL, NULL);
 		}
 		printf(" = ?\n");
