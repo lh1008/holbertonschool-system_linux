@@ -33,12 +33,14 @@ void end(void)
 int tprintf(char const *format, ...)
 {
 	va_list args;
+	int shared;
 
 	va_start(args, format);
 
-	printf("[%ld] %s", pthread_self(), format);
-
 	pthread_mutex_lock(&lock_x);
+
+	shared = printf("[%lu] ", pthread_self());
+	shared += vprintf(format, args);
 
 	pthread_mutex_unlock(&lock_x);
 
