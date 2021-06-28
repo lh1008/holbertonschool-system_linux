@@ -1,7 +1,8 @@
 #include "multithreading.h"
 
 /**
- * create_portions - creates portions array of the image
+ * create_portions - entry to create portions
+ * Desc: create_portions function to check the image
  * @img_blur: copy of the image which needs to be blurred
  * @img: image which needs to be blurred
  * @kernel: kernel matrix (Gaussian Blur)
@@ -34,9 +35,10 @@ blur_portion_t *create_portions(img_t *img_blur, img_t const *img,
 }
 
 /**
- * thread_entry - thread entry
+ * thread_entry - entry to thread_entry
+ * Desc: thread_entry function
  * @param: portion of the img which needs to be blurred
- * Return: NULL
+ * Return: nothing, void function or NULL if portions empty
 */
 void *thread_entry(void *portions)
 {
@@ -48,10 +50,13 @@ void *thread_entry(void *portions)
 }
 
 /**
- * blur_image - blur image using threads
+ * blur_image - entry to blur image
+ * Desc: blur_image function that blurs an
+ * entirety of an image using threads
  * @img_blur: copy of the image which needs to be blurred
  * @img: image which needs to be blurred
  * @kernel: kernel matrix (Gaussian Blur)
+ * Return: nothing, void function
 */
 void blur_image(img_t *img_blur, img_t const *img, kernel_t const *kernel)
 {
