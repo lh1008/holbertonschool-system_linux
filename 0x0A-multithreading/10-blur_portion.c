@@ -1,8 +1,8 @@
 #include "multithreading.h"
 
 /**
- * blur_image - entry to blur_image
- * Desc: blur_image function that applies a Gaussian Blur
+ * bl_ur - entry to blur_image
+ * Desc: bl_ur function that applies a Gaussian Blur
  * filter to a single RGB pixel in an img_t image
  * @img: pointer to struct containing original image pixel array
  * @img_blur: pointer to struct containing blurred image pixel array
@@ -10,7 +10,7 @@
  * @px_x: target pixel x coordinate (left to right)
  * @px_y: target pixel y coordinate (top to bottom)
  */
-void blur_image(const img_t *img, img_t *img_blur, const kernel_t *kernel,
+void bl_ur(const img_t *img, img_t *img_blur, const kernel_t *kernel,
 	       size_t px_x, size_t px_y)
 {
 	size_t i, j, k_radius, px_i;
@@ -75,7 +75,7 @@ void blur_portion(blur_portion_t const *portion)
 	for (y = portion->y; y < y_end; y++)
 		for (x = portion->x; x < x_end; x++)
 		{
-			blur_image(portion->img, portion->img_blur,
+			bl_ur(portion->img, portion->img_blur,
 				  portion->kernel, x, y);
 		}
 }

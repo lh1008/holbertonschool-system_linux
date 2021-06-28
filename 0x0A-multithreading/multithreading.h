@@ -6,6 +6,9 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdlib.h>
+
+#define NUM_THREADS (get_nprocs() * 2)
 
 /**
  * struct pixel_s - RGB pixel
