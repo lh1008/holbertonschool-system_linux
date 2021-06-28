@@ -21,9 +21,9 @@ int tprintf(char const *format, ...)
 
 	pthread_mutex_lock(&lock_x);
 
-	va_end(args);
-
 	pthread_mutex_unlock(&lock_x);
+
+	va_end(args);
 
 	return (0);
 }
@@ -46,5 +46,5 @@ void begin(void)
  */
 void end(void)
 {
-	pthread_exit(NULL);
+	pthread_mutex_destroy(&lock_x);
 }
