@@ -1,6 +1,6 @@
 #include "multithreading.h"
 
-pthread_mutex_t lock_x;
+static pthread_mutex_t lock_x;
 
 /**
  * begin - entry to begin constructor
