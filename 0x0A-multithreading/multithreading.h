@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <sys/sysinfo.h>
 
 #define NUM_THREADS (get_nprocs() * 2)
 
