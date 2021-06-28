@@ -1,8 +1,27 @@
 #include "multithreading.h"
 
 pthread_mutex_t lock_x;
-void begin(void) __attribute__((constructor));
-void end(void) __attribute__((destructor));
+
+/**
+ * begin - entry to begin constructor
+ * Desc: begin function that starts a mutex init before
+ * executing main
+ * Return: nothing, void function
+ */
+void begin(void)
+{
+	pthread_mutex_init(&lock_x, NULL);
+}
+
+/**
+ * end - entry to end destructor
+ * Desc: end function that exits a mutex init
+ * Return: nothing, void function
+ */
+void end(void)
+{
+	pthread_mutex_destroy(&lock_x);
+}
 
 /**
  * tprintf - entry to printf
@@ -26,25 +45,4 @@ int tprintf(char const *format, ...)
 	va_end(args);
 
 	return (0);
-}
-
-/**
- * begin - entry to begin constructor
- * Desc: begin function that starts a mutex init before
- * executing main
- * Return: nothing, void function
- */
-void begin(void)
-{
-	pthread_mutex_init(&lock_x, NULL);
-}
-
-/**
- * end - entry to end destructor
- * Desc: end function that exits a mutex init
- * Return: nothing, void function
- */
-void end(void)
-{
-	pthread_mutex_destroy(&lock_x);
 }
