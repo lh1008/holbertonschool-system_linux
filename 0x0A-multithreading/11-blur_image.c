@@ -38,9 +38,12 @@ blur_portion_t *create_portions(img_t *img_blur, img_t const *img,
  * @param: portion of the img which needs to be blurred
  * Return: NULL
 */
-void *thread_entry(void *param)
+void *thread_entry(void *portions)
 {
-	blur_portion((blur_portion_t *)param);
+	if (!portions)
+		pthread_exit(NULL);
+
+	blur_portion((blur_portion_t *)portions);
 	pthread_exit(NULL);
 }
 
