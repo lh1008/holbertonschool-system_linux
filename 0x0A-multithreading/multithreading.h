@@ -8,6 +8,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <sys/sysinfo.h>
+#include "list.h"
 
 #define NUM_THREADS (get_nprocs() * 2)
 
