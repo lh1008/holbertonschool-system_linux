@@ -1,4 +1,4 @@
-#include "list.h"
+#include "multithreading.h"
 
 /**
 * primeFactors - built the list of prime factors
