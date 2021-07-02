@@ -1,9 +1,10 @@
 #include "multithreading.h"
 
 /**
-* primeFactors - built the list of prime factors
+* prime_factor - entry to primer_factor
+* Desc: primer_factor function to make the list of prime factors
 * @n: number to get the prime factors
-* @l: the list of prime factors
+* @list: the list of prime factors
 * Return: Nothing
 */
 void prime_factor(unsigned long n, list_t *list)
@@ -38,8 +39,8 @@ void prime_factor(unsigned long n, list_t *list)
 }
 
 /**
- * primer_factors - entry to prime factors
- * Desc: primer_factors function that factorizes a
+ * prime_factors - entry to prime factors
+ * Desc: prime_factors function that factorizes a
  * number into a list of prime factors
  * @s: pointer to the string representation of the number to factorize
  * Return: pointer to factorized string
