@@ -33,8 +33,9 @@ int main(void)
 
 	printf("Server listening to port %d\n", ntohs(addrport.sin_port));
 
-	if ((ac_cept = accept(sockid, (struct sockaddr *) &addrport,
-			      (socklen_t *) &addrlen)) < 0)
+	ac_cept = accept(sockid, (struct sockaddr *) &addrport,
+			 (socklen_t *) &addrlen);
+	if (ac_cept < 0)
 	{
 		perror("accept");
 		exit(EXIT_FAILURE);
