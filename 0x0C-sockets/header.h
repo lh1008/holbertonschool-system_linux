@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 #define PORT 12345
 
