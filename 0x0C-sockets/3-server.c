@@ -29,11 +29,9 @@ int main(void)
 	servSock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (servSock < 0)
 		socket_error("socket failed");
-
 	echoServPort.sin_family = AF_INET;
 	echoServPort.sin_port = htons(PORT);
 	echoServPort.sin_addr.s_addr = htonl(INADDR_ANY);
-
 	if (bind(servSock, (struct sockaddr *) &echoServPort,
 		 sizeof(echoServPort)) < 0)
 		socket_error("bind failed");
@@ -41,22 +39,23 @@ int main(void)
 	status = listen(servSock, MAXPENDING);
 	if (status < 0)
 		socket_error("listen failed");
-
 	printf("Server listening to port %d\n", ntohs(echoServPort.sin_port));
 	ac_cept = accept(servSock, (struct sockaddr *) &echoServPort,
 			 (socklen_t *) &addrlen);
 	if (ac_cept < 0)
 		socket_error("accept failed");
 	printf("Client connected: %s\n", inet_ntoa(echoServPort.sin_addr));
-	for (;;)
+	printf("Message received: \"");
+	for (;; memset(buffer, '\0', 1024))
 	{
-		read(ac_cept, buffer, 1024);
 		client_msg = recv(ac_cept, buffer, 1024 - 1, 0);
 		if (client_msg < 0)
 			socket_error("received failed");
-		printf("Message received: \"%s\"\n", buffer);
-		close(ac_cept), close(servSock);
-		exit(EXIT_SUCCESS);
+		else if (client_msg == 0)
+			break;
+		printf("%s", buffer);
 	}
+	printf("\"\n");
+	close(ac_cept), close(servSock);
 	return (0);
 }
