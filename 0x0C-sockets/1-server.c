@@ -1,4 +1,5 @@
 #include "header.h"
+
 /**
  * socket_error - entry to socket error
  * Desc: socket_error function that prints error
