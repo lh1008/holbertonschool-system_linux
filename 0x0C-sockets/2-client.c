@@ -22,17 +22,18 @@ void socket_error(char *err)
 int main(int argc, char *argv[])
 {
 	int sockfd, con_nect;
-	uint16_t port = atoi(argv[2]);
+	uint16_t port;
 	char *host;
 	struct sockaddr_in servaddr;
-
-	host = argv[1];
 
 	if (argc != 3)
 	{
 		printf("Usage: %s <host> <port>\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
+
+	host = argv[1];
+	port = atoi(argv[2]);
 
 	sockfd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (sockfd < 0)
