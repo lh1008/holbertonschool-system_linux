@@ -41,7 +41,8 @@ int main(int argc, char *argv[])
 
 		servaddr.sin_family = AF_INET;
 		servaddr.sin_port = htons(port);
-		servaddr.sin_addr.s_addr = strcmp("localhost", host) ? inet_addr(argv[1]) : inet_addr("127.0.0.1");
+		servaddr.sin_addr.s_addr = strcmp("localhost", host) ?
+			inet_addr(argv[1]) : inet_addr("127.0.0.1");
 
 		con_nect = connect(sockfd, (struct sockaddr *)&servaddr,
 				   sizeof(servaddr));
