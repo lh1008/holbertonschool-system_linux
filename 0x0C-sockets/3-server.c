@@ -43,19 +43,16 @@ int main(void)
 		socket_error("listen failed");
 
 	printf("Server listening to port %d\n", ntohs(echoServPort.sin_port));
-	while (1)
-	{
-		ac_cept = accept(servSock, (struct sockaddr *) &echoServPort,
-				 (socklen_t *) &addrlen);
-		if (ac_cept < 0)
-			socket_error("accept");
-		printf("Client connected: %s\n",
-		       inet_ntoa(echoServPort.sin_addr));
-		read(ac_cept, buffer, 1024);
-		printf("%s\n", buffer);
+	ac_cept = accept(servSock, (struct sockaddr *) &echoServPort,
+			 (socklen_t *) &addrlen);
+	if (ac_cept < 0)
+		socket_error("accept failed");
+	printf("Client connected: %s\n", inet_ntoa(echoServPort.sin_addr));
+	read(ac_cept, buffer, 1024);
+	printf("Message received: \"%s\"\n", buffer);
 
-		close(ac_cept);
-		exit(EXIT_SUCCESS);
-	}
+	close(ac_cept);
+	exit(EXIT_SUCCESS);
+
 	return (0);
 }
