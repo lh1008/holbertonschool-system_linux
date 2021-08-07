@@ -51,11 +51,11 @@ int main(void)
 	for (;;)
 	{
 		read(ac_cept, buffer, 1024);
-		client_msg = recv(ac_cept, buffer, 1024, 0);
+		client_msg = recv(ac_cept, buffer, 1024 - 1, 0);
 		if (client_msg < 0)
 			socket_error("received failed");
 		printf("Message received: \"%s\"\n", buffer);
-		close(ac_cept);
+		close(ac_cept), close(servSock);
 		exit(EXIT_SUCCESS);
 	}
 	return (0);
