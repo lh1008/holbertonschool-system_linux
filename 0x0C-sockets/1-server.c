@@ -3,7 +3,7 @@
 /**
  * main - entry to main
  * Desc: main function to open a socket connection
- * Return:, nothing, void function. Print which port and maintain open.
+ * Return:, nothing, void function. Print port, IP, close connection.
  */
 int main(void)
 {
