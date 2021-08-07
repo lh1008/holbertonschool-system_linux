@@ -21,7 +21,7 @@ void socket_error(char *err)
  */
 int main(void)
 {
-	int servSock, status, ac_cept;
+	int servSock, status, ac_cept, client_msg;
 	struct sockaddr_in echoServPort;
 	int addrlen = sizeof(echoServPort);
 	char buffer[1024] = {0};
@@ -48,11 +48,15 @@ int main(void)
 	if (ac_cept < 0)
 		socket_error("accept failed");
 	printf("Client connected: %s\n", inet_ntoa(echoServPort.sin_addr));
-	read(ac_cept, buffer, 1024);
-	printf("Message received: \"%s\"\n", buffer);
-
-	close(ac_cept);
-	exit(EXIT_SUCCESS);
-
+	for (;;)
+	{
+		read(ac_cept, buffer, 1024);
+		client_msg = recv(ac_cept, buffer, 1024, 0);
+		if (client_msg < 0)
+			socket_error("received failed");
+		printf("Message received: \"%s\"\n", buffer);
+		close(ac_cept);
+		exit(EXIT_SUCCESS);
+	}
 	return (0);
 }
