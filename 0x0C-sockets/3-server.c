@@ -48,7 +48,7 @@ int main(void)
 	client_msg = recv(ac_cept, buffer, 1024, 0);
 	if (client_msg < 0)
 		socket_error("received failed");
-	printf("Message received: \"%s\n", buffer);
 	close(ac_cept), close(servSock);
+	printf("Message received: \"%s\n", buffer);
 	return (0);
 }
