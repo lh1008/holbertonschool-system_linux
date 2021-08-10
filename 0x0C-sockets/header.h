@@ -11,7 +11,6 @@
 #include <unistd.h>
 
 #define PORT 12345
-#define HTTP 8080
 #define MAXPENDING 5
 
 #endif /* HEADER_H */
