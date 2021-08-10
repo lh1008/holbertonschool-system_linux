@@ -1,6 +1,18 @@
 #include "http.h"
 
 /**
+ * socket_error - entry to socket error
+ * Desc: socket_error function that prints error
+ * @err: pointer to error string message
+ * Return: EXIT_FAILURE when error
+ */
+void socket_error(char *err)
+{
+	printf("%s\n", err);
+	exit(EXIT_FAILURE);
+}
+
+/**
  * start_server - opens & binds inet socket and accepts messages
  * Return: EXIT_SUCCESS or EXIT_FAILURE
  */
@@ -12,23 +24,17 @@ int start_server(void)
 	setbuf(stdout, NULL);
 	sd = socket(PF_INET, SOCK_STREAM, 0);
 	if (sd < 0)
-	{
-		perror("socket failed");
-		return (EXIT_FAILURE);
-	}
+		socket_error("socket failed");
+
 	server.sin_family = AF_INET;
 	server.sin_port = htons(PORT);
 	server.sin_addr.s_addr = htonl(INADDR_ANY);
 	if (bind(sd, (struct sockaddr *)&server, sizeof(server)) < 0)
-	{
-		perror("bind failure");
-		return (EXIT_FAILURE);
-	}
+		socket_error("bind failure");
+
 	if (listen(sd, BACKLOG) < 0)
-	{
-		perror("listen failure");
-		return (EXIT_FAILURE);
-	}
+		socket_error("listen failure");
+
 	printf("Server listening on port %d\n", ntohs(server.sin_port));
 	while (1)
 		accept_messages(sd);
@@ -50,10 +56,8 @@ int accept_messages(int sd)
 
 	client_sd = accept(sd, (struct sockaddr *)&client, &client_size);
 	if (client_sd < 0)
-	{
-		perror("accept failure");
-		return (EXIT_FAILURE);
-	}
+		socket_error("accept failure");
+
 	inet_ntop(AF_INET, &client.sin_addr, buf, INET_ADDRSTRLEN);
 	printf("Client connected: %s\n", buf);
 
